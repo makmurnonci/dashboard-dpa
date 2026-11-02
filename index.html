@@ -111,7 +111,7 @@ let A=[
 {p:"Penunjang Urusan Pemerintahan",k:"Operasional dan administrasi perkantoran",pagu:8700,keu:78,fis:78,tgt:83,pri:"Rutin",m:"Langsung",s:1,e:12,pic:"Kasubag Keuangan"}];
 let TGT=[3,8,14,21,29,38,47,57,66,73,87,100], ACT=[2,5,9,14,19,25,31,38,45,52];
 let BASE=[59,66], FAST=[74,94];
-const fmt=v=>"Rp"+(v/1000).toLocaleString("id-ID",{maximumFractionDigits:3})+" M";
+const fmt=v=>Math.abs(v)<1000?"Rp"+v.toLocaleString("id-ID",{maximumFractionDigits:3})+" juta":"Rp"+(v/1000).toLocaleString("id-ID",{maximumFractionDigits:3})+" M";
 const st=a=>{const g=a.keu-a.tgt;return g>=-5?["ok","Sesuai"]:g>=-20?["warn","Waspada"]:["bad","Kritis"]};
 let P,R,T,F,rp,tp,fp,gap,bad,badGap;
 function calc(){P=A.reduce((s,a)=>s+a.pagu,0);R=A.reduce((s,a)=>s+a.pagu*a.keu/100,0);T=A.reduce((s,a)=>s+a.pagu*a.tgt/100,0);F=A.reduce((s,a)=>s+a.pagu*a.fis/100,0);
